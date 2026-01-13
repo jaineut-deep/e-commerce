@@ -30,6 +30,13 @@ def get_zelotes() -> Product:
 
 
 @pytest.fixture
+def get_expensive_mouse() -> Product:
+    return Product(
+        name="Attack Shark R5 Ultra", description="Hybrid-connecting ergonomic mouse", price=45.7, quantity=57
+    )
+
+
+@pytest.fixture
 def get_phone_cat(get_tecno: Product, get_ulefone: Product, get_vivo: Product) -> Category:
     return Category(
         name="Smartphones",
