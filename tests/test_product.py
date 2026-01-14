@@ -1,3 +1,7 @@
+from unittest.mock import patch
+
+from pytest import CaptureFixture
+
 from src.product import Product
 
 
@@ -6,6 +10,15 @@ def test_get_tecno(get_tecno: Product) -> None:
     assert get_tecno.description == "Budget variant with performance"
     assert get_tecno.price == 1569.0
     assert get_tecno.quantity == 23
+    with patch("builtins.input", return_value="y"):
+        get_tecno.price = 1500.0
+    assert get_tecno.price == 1500.0
+
+
+def test_get_message(get_tecno: Product, capsys: CaptureFixture[str]) -> None:
+    get_tecno.price = 0
+    captured = capsys.readouterr()
+    assert captured.out == "Цена не должна быть нулевая или отрицательная\n"
 
 
 def test_get_ulefone(get_ulefone: Product) -> None:
@@ -34,3 +47,8 @@ def test_get_zelotes(get_zelotes: Product) -> None:
     assert get_zelotes.description == "Vertical mouse"
     assert get_zelotes.price == 35.0
     assert get_zelotes.quantity == 101
+    new_mouse = Product.new_product(
+        {"name": "Zelotes T50", "description": "Vertical mouse", "price": 36.0, "quantity": 5}
+    )
+    assert new_mouse.price == 36.0
+    assert new_mouse.quantity == 106

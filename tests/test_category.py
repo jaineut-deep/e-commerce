@@ -10,14 +10,26 @@ def test_category_init(
     get_vivo: Product,
     get_genius: Product,
     get_zelotes: Product,
+    get_expensive_mouse: Product,
 ) -> None:
     assert get_phone_cat.name == "Smartphones"
     assert get_phone_cat.description == "Modern devices for connection, messages and internet serfing"
-    assert get_phone_cat.products == [get_tecno, get_ulefone, get_vivo]
+    assert get_phone_cat.products == (
+        "Tecno 15, 1569.0 руб. Остаток: 23 шт.\n"
+        "Ulefone 13T, 1849.0 руб. Остаток: 150 шт.\n"
+        "Vivo iQ Z9, 2441.0 руб. Остаток: 34 шт.\n"
+    )
 
     assert get_game_mouse.name == "Game Mouse"
     assert get_game_mouse.description == "Ergonomics game mice with high performance and optical sensor"
-    assert get_game_mouse.products == [get_genius, get_zelotes]
-
-    assert Category.product_count == 5
+    assert get_game_mouse.products == (
+        "Genius U75, 25.0 руб. Остаток: 180 шт.\n" "Zelotes T50, 35.0 руб. Остаток: 101 шт.\n"
+    )
+    get_game_mouse.add_product(get_expensive_mouse)
+    assert get_game_mouse.products == (
+        "Genius U75, 25.0 руб. Остаток: 180 шт.\n"
+        "Zelotes T50, 35.0 руб. Остаток: 101 шт.\n"
+        "Attack Shark R5 Ultra, 45.7 руб. Остаток: 57 шт.\n"
+    )
+    assert Category.product_count == 6
     assert Category.category_count == 2
