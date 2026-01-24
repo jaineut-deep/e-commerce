@@ -1,6 +1,7 @@
 import pytest
 
 from src.category import Category
+from src.helpers import GoodsIter
 from src.product import Product
 
 
@@ -52,3 +53,13 @@ def get_game_mouse(get_genius: Product, get_zelotes: Product) -> Category:
         description="Ergonomics game mice with high performance and optical sensor",
         products=[get_genius, get_zelotes],
     )
+
+
+@pytest.fixture
+def get_phone_iterator(get_phone_cat: Category) -> GoodsIter:
+    return GoodsIter(get_phone_cat)
+
+
+@pytest.fixture
+def get_mouse_iterator(get_game_mouse: Category) -> GoodsIter:
+    return GoodsIter(get_game_mouse)

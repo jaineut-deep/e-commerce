@@ -33,3 +33,21 @@ def test_category_init(
     )
     assert Category.product_count == 6
     assert Category.category_count == 2
+
+
+def test_category_products_list(
+    get_phone_cat: Category,
+    get_game_mouse: Category,
+    get_tecno: Product,
+    get_ulefone: Product,
+    get_vivo: Product,
+    get_genius: Product,
+    get_zelotes: Product,
+) -> None:
+    assert get_phone_cat.category_products == [get_tecno, get_ulefone, get_vivo]
+    assert get_game_mouse.category_products == [get_genius, get_zelotes]
+
+
+def test_category_string(get_phone_cat: Category, get_game_mouse: Category) -> None:
+    assert str(get_phone_cat) == "Smartphones, количество продуктов: 207 шт."
+    assert str(get_game_mouse) == "Game Mouse, количество продуктов: 281 шт."
