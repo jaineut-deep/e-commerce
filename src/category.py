@@ -21,7 +21,7 @@ class Category:
         Category.category_count += 1
         Category.product_count += len(products)
 
-    def __str__(self):
+    def __str__(self) -> str:
         """Магический метод, возвращающий строковое отображение объекта класса Category с общим количеством
         продуктов этого объекта.
         """
@@ -47,3 +47,9 @@ class Category:
         for prod in self.__products:
             product_str += f"{str(prod)}\n"
         return product_str
+
+    @property
+    def category_products(self) -> list["Product"]:
+        """Геттер возвращает список объектов класса Product из класса Category."""
+
+        return self.__products

@@ -20,10 +20,19 @@ class Product:
 
         self.__product_list.append(self)
 
-    def __str__(self):
+    def __str__(self) -> str:
         """Магический метод, возвращающий строковое отображение объекта класса Product."""
 
         return f"{self.name}, {self.price} руб. Остаток: {self.quantity} шт."
+
+    def __add__(self, other: Any) -> Any:
+        """Магический метод, возвращающий сумму произведений цены на количество у двух объектов."""
+
+        if isinstance(self, type(other)):
+            result_expense = (self.price * self.quantity) + (other.price * other.quantity)
+            return result_expense
+        else:
+            raise TypeError
 
     @classmethod
     def new_product(cls, product: dict[str, Any]) -> "Product":
