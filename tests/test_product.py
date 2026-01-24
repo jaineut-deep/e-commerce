@@ -52,3 +52,12 @@ def test_get_zelotes(get_zelotes: Product) -> None:
     )
     assert new_mouse.price == 36.0
     assert new_mouse.quantity == 106
+
+
+def test_get_string(get_expensive_mouse: Product) -> None:
+    assert str(get_expensive_mouse) == "Attack Shark R5 Ultra, 45.7 руб. Остаток: 57 шт."
+
+
+def test_get_addition(get_expensive_mouse: Product, get_zelotes: Product) -> None:
+    full_cost = get_expensive_mouse + get_zelotes
+    assert full_cost == 6139.9

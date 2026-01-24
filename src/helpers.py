@@ -11,6 +11,8 @@ class GoodsIter:
     index_count: int
 
     def __init__(self, data_category: Category):
+        """Метод для инициализации экземпляра класса GoodsIter. Задаем значения атрибутам экземпляра."""
+
         self.data_category = data_category
         self.index_count = 0
 
