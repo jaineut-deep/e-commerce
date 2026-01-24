@@ -20,6 +20,11 @@ class Product:
 
         self.__product_list.append(self)
 
+    def __str__(self):
+        """Магический метод, возвращающий строковое отображение объекта класса Product."""
+
+        return f"{self.name}, {self.price} руб. Остаток: {self.quantity} шт."
+
     @classmethod
     def new_product(cls, product: dict[str, Any]) -> "Product":
         """Класс-метод принимает на вход два аргумента — cls и продукт для создания в виде словаря —

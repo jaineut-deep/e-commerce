@@ -21,6 +21,16 @@ class Category:
         Category.category_count += 1
         Category.product_count += len(products)
 
+    def __str__(self):
+        """Магический метод, возвращающий строковое отображение объекта класса Category с общим количеством
+        продуктов этого объекта.
+        """
+
+        products_count = 0
+        for product in self.__products:
+            products_count += product.quantity
+        return f"{self.name}, количество продуктов: {products_count} шт."
+
     def add_product(self, product: Product) -> None:
         """Метод принимает на вход аргументы self и продукт для добавления.
         Не возвращает никакого значения
@@ -35,5 +45,5 @@ class Category:
 
         product_str = ""
         for prod in self.__products:
-            product_str += f"{prod.name}, {prod.price} руб. Остаток: {prod.quantity} шт.\n"
+            product_str += f"{str(prod)}\n"
         return product_str
