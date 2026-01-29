@@ -1,3 +1,5 @@
+import pytest
+
 from src.category import Category
 from src.product import Product
 
@@ -51,3 +53,8 @@ def test_category_products_list(
 def test_category_string(get_phone_cat: Category, get_game_mouse: Category) -> None:
     assert str(get_phone_cat) == "Smartphones, количество продуктов: 207 шт."
     assert str(get_game_mouse) == "Game Mouse, количество продуктов: 281 шт."
+
+
+def test_adding_not_product(get_game_mouse: Category) -> None:
+    with pytest.raises(TypeError):
+        get_game_mouse.add_product("Not a product")  # type: ignore[arg-type]
