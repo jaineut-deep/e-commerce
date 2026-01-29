@@ -3,6 +3,7 @@ import pytest
 from src.category import Category
 from src.helpers import GoodsIter
 from src.product import Product
+from src.subproducts import LawnGrass, Smartphone
 
 
 @pytest.fixture
@@ -63,3 +64,13 @@ def get_phone_iterator(get_phone_cat: Category) -> GoodsIter:
 @pytest.fixture
 def get_mouse_iterator(get_game_mouse: Category) -> GoodsIter:
     return GoodsIter(get_game_mouse)
+
+
+@pytest.fixture
+def get_smartphone_product() -> Smartphone:
+    return Smartphone("Okitel", "Rough phone for travels", 156.8, 81, 85.2, "KT802", 128, "Gray/orange")
+
+
+@pytest.fixture
+def get_grass_product() -> LawnGrass:
+    return LawnGrass("Буратино", "Морозоустойчивая газонная трава", 99.9, 183, "Россия", "6 дней", "Изумрудный")
