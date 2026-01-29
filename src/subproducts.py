@@ -29,7 +29,7 @@ class Smartphone(Product):
 
 
 class LawnGrass(Product):
-    """Класс для представления смартфона."""
+    """Класс для представления газонной травы."""
 
     __product_list: list["LawnGrass"] = []
 
@@ -43,7 +43,7 @@ class LawnGrass(Product):
         germination_period: str,
         color: str,
     ) -> None:
-        """Метод для инициализации экземпляра класса Smartphone. Задаем значения атрибутам экземпляра."""
+        """Метод для инициализации экземпляра класса LawnGrass. Задаем значения атрибутам экземпляра."""
 
         super().__init__(name, description, price, quantity)
         self.country = country
