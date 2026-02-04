@@ -20,9 +20,9 @@ class Product(BaseProduct, MixinPrint):
         self.description = description
         self.__price = price
         self.quantity = quantity
+        super().__init__()
 
         self.__product_list.append(self)
-        super().__init__()
 
     def __str__(self) -> str:
         """Магический метод, возвращающий строковое отображение объекта класса Product."""
