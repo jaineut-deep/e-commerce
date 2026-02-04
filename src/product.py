@@ -1,9 +1,10 @@
 from typing import Any
 
 from src.primary_product import BaseProduct
+from src.mixin_addons import MixinPrint
 
 
-class Product(BaseProduct):
+class Product(BaseProduct, MixinPrint):
     """Класс для представления продукта"""
 
     name: str
@@ -21,6 +22,7 @@ class Product(BaseProduct):
         self.quantity = quantity
 
         self.__product_list.append(self)
+        super().__init__()
 
     def __str__(self) -> str:
         """Магический метод, возвращающий строковое отображение объекта класса Product."""
