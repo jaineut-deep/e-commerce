@@ -1,7 +1,7 @@
 from typing import Any
 
-from src.primary_product import BaseProduct
 from src.mixin_addons import MixinPrint
+from src.primary_product import BaseProduct
 
 
 class Product(BaseProduct, MixinPrint):
