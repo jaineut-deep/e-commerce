@@ -1,7 +1,10 @@
 from typing import Any
 
+from src.mixin_addons import MixinPrint
+from src.primary_product import BaseProduct
 
-class Product:
+
+class Product(BaseProduct, MixinPrint):
     """Класс для представления продукта"""
 
     name: str
@@ -17,6 +20,7 @@ class Product:
         self.description = description
         self.__price = price
         self.quantity = quantity
+        super().__init__()
 
         self.__product_list.append(self)
 
