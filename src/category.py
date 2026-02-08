@@ -22,7 +22,8 @@ class Category:
         Category.product_count += len(products)
 
     def __str__(self) -> str:
-        """Магический метод, возвращающий строковое отображение объекта класса Category с общим количеством
+        """
+        Магический метод, возвращающий строковое отображение объекта класса Category с общим количеством
         продуктов этого объекта.
         """
 
@@ -32,7 +33,8 @@ class Category:
         return f"{self.name}, количество продуктов: {products_count} шт."
 
     def add_product(self, product: Product) -> None:
-        """Метод принимает на вход аргументы self и продукт для добавления.
+        """
+        Метод принимает на вход аргументы self и продукт для добавления.
         Не возвращает никакого значения
         """
 
@@ -56,3 +58,16 @@ class Category:
         """Геттер возвращает список объектов класса Product из класса Category."""
 
         return self.__products
+
+    def middle_price(self) -> float:
+        """
+        Метод, возвращающий средний ценник за продукт из списка продуктов класса Category. Если список продуктов
+        пустой - возвращается ноль.
+        """
+
+        try:
+            mid_price = sum([prod.price for prod in self.category_products]) / len(self.category_products)
+        except ZeroDivisionError:
+            return 0.0
+        else:
+            return round(mid_price, 1)
