@@ -1,5 +1,6 @@
 from unittest.mock import patch
 
+import pytest
 from pytest import CaptureFixture
 
 from src.product import Product
@@ -61,3 +62,8 @@ def test_get_string(get_expensive_mouse: Product) -> None:
 def test_get_addition(get_expensive_mouse: Product, get_zelotes: Product) -> None:
     full_cost = get_expensive_mouse + get_zelotes
     assert full_cost == 6139.9
+
+
+def test_wrong_init(get_phone_dict: dict) -> None:
+    with pytest.raises(ValueError, match="Товар с нулевым количеством не может быть добавлен"):
+        Product(**get_phone_dict)

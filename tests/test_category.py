@@ -58,3 +58,11 @@ def test_category_string(get_phone_cat: Category, get_game_mouse: Category) -> N
 def test_adding_not_product(get_game_mouse: Category) -> None:
     with pytest.raises(TypeError):
         get_game_mouse.add_product("Not a product")  # type: ignore[arg-type]
+
+
+def test_average_price(get_phone_cat: Category) -> None:
+    assert get_phone_cat.middle_price() == 1953.0
+
+
+def test_zero_average_price(get_unfilled_category: Category) -> None:
+    assert get_unfilled_category.middle_price() == 0.0

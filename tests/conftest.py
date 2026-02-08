@@ -7,6 +7,11 @@ from src.subproducts import LawnGrass, Smartphone
 
 
 @pytest.fixture
+def get_phone_dict() -> dict:
+    return {"name": "Nokia N8", "description": "Old robust brand of smartphones", "price": 1452.4, "quantity": 0}
+
+
+@pytest.fixture
 def get_tecno() -> Product:
     return Product(name="Tecno 15", description="Budget variant with performance", price=1569.0, quantity=23)
 
@@ -74,3 +79,8 @@ def get_smartphone_product() -> Smartphone:
 @pytest.fixture
 def get_grass_product() -> LawnGrass:
     return LawnGrass("Буратино", "Морозоустойчивая газонная трава", 99.9, 183, "Россия", "6 дней", "Изумрудный")
+
+
+@pytest.fixture
+def get_unfilled_category() -> Category:
+    return Category("Складные ножи", "Качественные складные ножи для туризма", [])
